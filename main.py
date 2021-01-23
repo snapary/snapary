@@ -5,11 +5,13 @@ import responses
 
 from flask import current_app, flash, Flask, Markup, redirect, render_template, jsonify, session
 from flask import request, url_for
+from flask_cors import CORS
 from google.cloud import error_reporting
 import google.cloud.logging
 from datetime import datetime
 
 app = Flask(__name__)
+CORS(app)
 
 app.secret_key = '\xf7\xf9\xf7\x14L%\x83r\xdf4\xea=\xfd\xe5\xcb\x17\x1e\xf7\xed\x04\xd5\xa31O'
 app.config['SESSION_TYPE'] = 'redis'
@@ -17,11 +19,11 @@ app.config['SESSION_TYPE'] = 'redis'
 app.debug = False
 app.testing = False
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/api', methods=['GET', 'POST'])
 def homepage():
     return '<h1> STUFF! </h1>'
 
-@app.route('/user/signin', methods=['GET', 'POST'])
+@app.route('/api/user/signin', methods=['GET', 'POST'])
 def signin():
     username = request.values["username"].lower()
     password = request.values["password"]
@@ -36,13 +38,13 @@ def signin():
             "success": False
         })
 
-@app.route('/user/signout', methods=['GET', 'POST'])
+@app.route('/api/user/signout', methods=['GET', 'POST'])
 def signout():
     session['auth'] = False
     session['user'] = ''
     return jsonify({'success': True})
 
-@app.route('/user/signup', methods=['GET', 'POST'])
+@app.route('/api/user/signup', methods=['GET', 'POST'])
 def signup():
     username = request.values["username"].lower()
     password = request.values["password"]
@@ -54,14 +56,21 @@ def signup():
         return jsonify({"success": False})
     pass
 
-@app.route('/user/debug', methods=['GET', 'POST'])
+@app.route('/api/user/status', methods=['GET', 'POST'])
+def status():
+    return success(200,{
+        'loginStatus': True if (session['auth'] is not None and session['auth']) else False,
+        'user': session['user'] if session['user'] is not None else ''
+    })
+
+@app.route('/api/user/debug', methods=['GET', 'POST'])
 def get_user():
     if session['auth'] is None or not session['auth'] or session['user'] == '':
         return jsonify({"success": False})
     user_dict = firestore.user(session["user"])
     return jsonify(user_dict) if not user_dict == False else jsonify({"success": False})
 
-@app.route('/user/setHistory', methods=['GET',  'POST'])
+@app.route('/api/user/setHistory', methods=['GET',  'POST'])
 def set_history():
     time=datetime.now()
     if session['auth'] is not None and session['auth']:

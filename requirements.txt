@@ -8,3 +8,4 @@ six==1.15.0
 bcrypt
 Flask-Session
 geopy
+flask-cors
