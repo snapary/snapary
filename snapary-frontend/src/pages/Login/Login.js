@@ -19,7 +19,7 @@ function Login() {
         var jsonData = JSON.stringify({'username': username, 'password': password});
         console.log(jsonData);
 
-        fetch('https://snapary.uc.r.appspot.com/user/signin', {
+        fetch('https://snapary.roydu.ca/api/user/signin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -6,10 +6,11 @@ import "react-datepicker/dist/react-datepicker.css";
 
 function History() {
     const [date, setDate] = useState(new Date());
-    const history = ['I am happy', 'Meh ok', 'Died'];
-    const listitems = history.map((entry) => 
-        <ListGroup.Item action variant="info">
-            entry
+    const history1 = ['I am happy', 'Meh ok', 'Died', 'Alive again', 'Doing well, maybe'];
+    const history2 = ['Today is the end of the world bye'];
+    const listitems = (history) => history.map((entry) => 
+        <ListGroup.Item action variant="light">
+            {entry}
         </ListGroup.Item>);
 
     return (
@@ -30,7 +31,7 @@ function History() {
                 </div>
                 <div className="list-group">
                     <ListGroup>
-                        {listitems}
+                        {listitems(history2)}
                     </ListGroup>
                 </div>
             </div>

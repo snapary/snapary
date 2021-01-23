@@ -4,7 +4,7 @@
     background-image: linear-gradient(to bottom right, #90f4d6 , rgb(225, 129, 255));
     background-repeat: no-repeat;
     background-size: 100%;
-    min-height: 700px;
+    min-height: 630px;
 }
 
 .title-row {
@@ -49,4 +49,11 @@
     padding-top: 1rem;
     font-size: large;
     font-weight: 400;
+}
+
+.list-group {
+    padding-top: 1rem;
+    margin-right: 2rem;
+    margin-left: 2rem;
+    font-size: 1.2rem;
 }
