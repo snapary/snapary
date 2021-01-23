@@ -6,3 +6,47 @@
     background-size: 100%;
     min-height: 700px;
 }
+
+.title-row {
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex: 50%;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    border-bottom: 5px double black;
+}
+
+.title-col {
+    display: flex;
+    flex-direction: column;
+    flex: 50%;
+}
+
+.bate-picker {
+    padding-top: 4rem;
+    margin-left: 5rem;
+}
+
+.title-line {
+    margin-left: 2rem;
+    font-size: 3rem;
+    font-weight: 500;
+}
+
+.react-datepicker {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.3rem;
+    background-color: #a66;
+    color: #000;
+    border: 0px;
+    border-radius: 0;
+    display: inline-block;
+    position: relative;
+}
+
+.select-line {
+    padding-top: 1rem;
+    font-size: large;
+    font-weight: 400;
+}
