@@ -15,6 +15,10 @@ app.testing = False
 def homepage():
     return '<h1> STUFF! </h1>'
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    pass
+
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
