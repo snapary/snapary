@@ -1,4 +1,5 @@
 from google.cloud import firestore
+from datetime import datetime
 
 def user(username):
     user = firestore.Client().collection(u'Users').document(str(username).lower()).get()
@@ -18,14 +19,15 @@ def make_user(username, hash, salt):
         return True
 
 
-def save_entry(username, time, longitude, latitude, area):
+def save_entry(username, longitude, latitude, area, raw = None, time=datetime.now()):
     user_page = firestore.Client().collection(u'Users').document(str(username).lower())
     if user_page.get().exists:
         user_page.update({u'history' : firestore.ArrayUnion([{u'time': time,
                                                               u'longitude': longitude,
                                                               u'latitude': latitude,
-                                                              u'area': area}])})
-        return True
+                                                              u'area': area,
+                                                              u'raw': raw}])})
+        return True 
     else:
         # user does not exist
         return False

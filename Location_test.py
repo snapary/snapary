@@ -1,4 +1,4 @@
-from Location import Location as LC
+from location import Location as LC
 import sys
 import firestore
 from datetime import datetime

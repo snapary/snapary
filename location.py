@@ -6,6 +6,8 @@ area_priority_list = ['suburb', 'hamlet', 'village', 'shop', 'neighbourhood', 't
 
 class Location:
     def __init__(self, Latitude, Longitude):
+        self.lat = Latitude
+        self.long = Longitude
         self.locator = Nominatim(user_agent="snapary_test")
         coordinate = f"{Latitude}, {Longitude}"
         try:
@@ -21,7 +23,7 @@ class Location:
         else:
             return "Location Not Available"
 
-    def get_raw_location(self):
+    def get_raw(self):
         if self.location:
             return self.location.raw['address']
         else:
