@@ -1,0 +1,53 @@
+.footer-container {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    margin-left: 0;
+    bottom: 0;
+    background-color: #ececec;
+    height: 30px;
+}
+
+.footer-line {
+    color: grey;
+    padding-top: 7px;
+}
+
+.right-align {
+    display: inline-block;
+    position: absolute;
+    padding-right: 1.5rem;
+    right: 0;
+}
+
+.policy-link {
+    padding-left: 2.2rem;
+}
+
+.company-link {
+    padding-left: 1.5rem;
+}
+
+.copyright {
+    align-content: right;
+    text-align: right;
+}
+
+.policy-link, .company-link, .copyright {
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+a {
+    text-decoration: none ;
+    color:grey;
+}
+
+a:hover {
+    color:#f0f0f0;
+    text-decoration:none;
+    cursor:pointer;
+    transition: opacity 0.2s, visibility 0.2s;
+}
