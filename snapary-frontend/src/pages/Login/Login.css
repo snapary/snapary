@@ -1,5 +1,22 @@
+.login-bg {
+    background-image: linear-gradient(to bottom right, pink , #f3d250);
+    position: relative;
+    min-height: 700px;
+    height: 100%;
+}
+
 @media all and (min-width: 480px) {
+    .login-bg {
+        position: relative;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-image: linear-gradient(to bottom right, pink , #f3d250);
+        background-size: 100%;
+    }
+
     .Login {
+        margin-right: 10rem;
+        margin-left: 10rem;
         padding: 60px 0;
     }
 

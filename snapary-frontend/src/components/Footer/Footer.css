@@ -46,7 +46,7 @@ a {
 }
 
 a:hover {
-    color:#f0f0f0;
+    color:#f78888;
     text-decoration:none;
     cursor:pointer;
     transition: opacity 0.2s, visibility 0.2s;

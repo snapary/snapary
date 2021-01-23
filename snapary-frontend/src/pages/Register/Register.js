@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Form } from "reactstrap";
-import { Button } from "reactstrap";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import "./Register.css";
+import "../Login/Login.css"
 
 function Register() {
     const [email, setEmail] = useState("");
@@ -13,36 +14,40 @@ function Register() {
     }
 
     return (
-        <div className="Register">
-            <Form.Group size="lg" controlId="email">
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                    autoFocus
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-            </Form.Group>
-            <Form.Group size="lg" controlId="password0">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                    type="password"
-                    value={password0}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-            </Form.Group>
-            <Form.Group size="lg" controlId="passwor10">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                    type="password"
-                    value={password1}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-            </Form.Group>
-            <Button block size="lg" type="Register" disabled={valid_passwords()}>
-                Register
-            </Button>
-        </div>
+        <>
+            <div className="login-bg">
+                <div className="Register" style={{"padding-top": '6rem'}}>
+                    <Form.Group size="lg" controlId="email">
+                        <Form.Label style={{"font-weight": "700", "font-size": "40", "lineHeight": "3"}}>Username</Form.Label>
+                        <Form.Control
+                            autoFocus
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </Form.Group>
+                    <Form.Group size="lg" controlId="password0">
+                        <Form.Label style={{"font-weight": "700", "font-size": "40", "lineHeight": "2"}}>Password</Form.Label>
+                        <Form.Control
+                            type="password"
+                            value={password0}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </Form.Group>
+                    <Form.Group size="lg" controlId="passwor10">
+                        <Form.Label style={{"font-weight": "700", "font-size": "40", "lineHeight": "2"}}> Confirm Password</Form.Label>
+                        <Form.Control
+                            type="password"
+                            value={password1}
+                            onChange={(e) => confirmPassword(e.target.value)}
+                        />
+                    </Form.Group> 
+                    <Button block size="lg" type="Register" disabled={valid_passwords()}>
+                        Register
+                    </Button>
+                </div>
+            </div>
+        </>
     );
 }
 

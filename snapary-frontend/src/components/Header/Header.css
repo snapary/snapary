@@ -1,5 +1,7 @@
 .navbar {
-    background: #ececec;
+    background-image: url('../../images/paper.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
     height: 80px;
     display: flex;
     justify-content: center;
@@ -51,7 +53,8 @@
     justify-self: start;
     cursor: pointer;
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 3rem;
+    padding-bottom: 18px;
     display: flex;
     align-items: center;
   }
@@ -77,12 +80,14 @@
   
   .nav-item:hover {
     border-bottom: 3px solid #f87777;
+    color: #f78888
   }
   
   .nav-links {
     color: black;
     display: flex;
     align-items: center;
+    font-weight: 600;
     text-decoration: none;
     padding: 0.5rem 1rem;
     height: 100%;
@@ -141,6 +146,7 @@
   
     .nav-item:hover {
       border: none;
+      color: #f78888;
     }
   
     .nav-item {

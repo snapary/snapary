@@ -30,22 +30,27 @@ function Header() {
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to='/my-cat' className="nav-links" onClick={closeMobileMenu}>
+                                <Link to='/alert' className="nav-links" onClick={closeMobileMenu}>
                                     Alert
                                 </Link>
                             </li>
                             <li className="nav-item">
                                 <Link to='/history' className="nav-links" onClick={closeMobileMenu}>
+                                    History
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to='/post' className="nav-links" onClick={closeMobileMenu}>
                                     Post   
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to='/Login' className="nav-links" onClick={closeMobileMenu}>
+                                <Link to='/login' className="nav-links" onClick={closeMobileMenu}>
                                     Login
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to='/Register' className="nav-links" onClick={closeMobileMenu}>
+                                <Link to='/register' className="nav-links" onClick={closeMobileMenu}>
                                     Register  
                                 </Link>
                             </li>

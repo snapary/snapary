@@ -1,5 +1,7 @@
 @media all and (min-width: 480px) {
     .Register {
+        margin-right: 20rem;
+        margin-left: 20rem;
         padding: 60px 0;
     }
 
