@@ -40,12 +40,12 @@ function Header() {
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to='/donate' className="nav-links" onClick={closeMobileMenu}>
-                                    Sign in    
+                                <Link to='/Login' className="nav-links" onClick={closeMobileMenu}>
+                                    Login
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to='/donate' className="nav-links" onClick={closeMobileMenu}>
+                                <Link to='/Register' className="nav-links" onClick={closeMobileMenu}>
                                     Register  
                                 </Link>
                             </li>
