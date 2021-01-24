@@ -8,9 +8,6 @@ function Home() {
             <div className="home-bg">
                 <div className="home-row">
                     <div className="home-col">
-                        <FaFeatherAlt size={500} style={{"paddingTop": "9rem", "paddingLeft": "13rem"}}/>
-                    </div>
-                    <div className="home-col">
                         <div className="home-title">
                             Snapary
                         </div>
