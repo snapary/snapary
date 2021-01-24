@@ -1,6 +1,7 @@
 import React from 'react'
 import './Home.css'
-import {FaFeatherAlt} from 'react-icons/fa';
+import Logo from  '../../images/YEET1.png'
+
 
 function Home() {
     return (
@@ -9,7 +10,7 @@ function Home() {
                 <div className="home-row">
                     <div className="home-col">
                         <div className="home-title">
-                            Snapary
+                            <img alt="logo" src={Logo} width="400px" height="300px" />
                         </div>
                         <div className="home-title-2">
                             Your sticker diary

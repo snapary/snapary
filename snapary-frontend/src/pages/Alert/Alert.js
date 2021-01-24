@@ -18,7 +18,7 @@ function Alert() {
         }
         else
         {
-            return ["No alert"];
+            return listitems(["No alert"]);
         }
     }
 

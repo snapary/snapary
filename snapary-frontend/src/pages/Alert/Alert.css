@@ -4,13 +4,13 @@
     background-image: linear-gradient(to bottom right, #90ccf4 , rgb(223, 250, 71));
     background-repeat: no-repeat;
     background-size: 100%;
-    min-height: 700px;
+    min-height: 760px;
     text-align: center;
 }
 
 .alert-message {
-    padding-top: 14rem;
-    font-size: 4rem;
+    padding-top: 2rem;
+    font-size: 2rem;
     font-weight: 900;
 }
 

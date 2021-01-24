@@ -8,6 +8,7 @@ import Alert from "./pages/Alert/Alert"
 import History from "./pages/History/History"
 import Post from "./pages/Post/Post"
 import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
 
 
 function App() {

@@ -17,12 +17,14 @@ function Post() {
     const handleLocalPost = (event) => {
         let lat = 0;
         let lng = 0;
+        var jsonData;
         navigator.geolocation.watchPosition(function(position) {
             lat = position.coords.latitude;
             lng = position.coords.longitude;
-            console.log("ahhhhhhhhhhhhfffffff");
+            console.log("lat:", lat);
+            console.log("lng:", lng);
         });
-        var jsonData = JSON.stringify({'lat': lat, 'long': lng, 'emo':emoji});
+        jsonData = JSON.stringify({'lat': lat, 'long': lng, 'emo':emoji});
         console.log(jsonData);
 
         /*var jsonData1 = JSON.stringify({'username': 'grant1', 'password': 'pornhubPremium!'});
@@ -54,8 +56,8 @@ function Post() {
               console.log(data);
               if (data["success"])
               {
-                alert("Successfully Posted to Private Diary!")
-                history.push('/post')
+                alert("Successfully Posted to Private Diary!");
+                history.push('/post');
               }
         })});
 

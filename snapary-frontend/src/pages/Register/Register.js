@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import "./Register.css";
 import "../Login/Login.css"
 import { useHistory } from "react-router-dom";
+import Logo from  '../../images/YEET1.png';
 
 function Register() {
     const [email, setEmail] = useState("");
@@ -41,7 +42,10 @@ function Register() {
     return (
         <>
             <div className="login-bg">
-                <div className="Register" style={{"paddingTop": '6rem'}}>
+                <div className="logo">
+                    <img alt="logo" src={Logo} width="350px" height="220px" />
+                </div>
+                <div className="Register" >
                     <Form.Group size="lg" controlId="email">
                         <Form.Label style={{"fontWeight": "700", "fontSize": "40", "lineHeight": "3"}}>Username</Form.Label>
                         <Form.Control

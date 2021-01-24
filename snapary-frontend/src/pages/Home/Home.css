@@ -4,7 +4,7 @@
     background-image: linear-gradient(to bottom right, #90ccf4 , rgb(223, 250, 71));
     background-repeat: no-repeat;
     background-size: 100%;
-    min-height: 700px;
+    min-height: 100rem;
     text-align: center;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .home-title {
-    padding-top: 12rem;
+    padding-top: 7.5rem;
     font-weight: 900;
     font-size: 5rem;
 }
