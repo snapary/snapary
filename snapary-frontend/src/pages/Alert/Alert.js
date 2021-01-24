@@ -3,12 +3,34 @@ import { FaExclamationCircle } from 'react-icons/fa';
 import './Alert.css'
 
 function Alert() {
-    const [alert, setAlert] = useState("No alert");
+    const [alert, setAlert] = useState(<div className="alert-message">No Alert</div>);
+    const processData = (data) => {
+        if (data["alert"])
+        {
+            let list = []
+            for (var key in data["infected_areas"])
+            {
+                let str = key;
+                str.concat(": ", data["infected_areas"][key]);
+                list.push(str);
+            }
+            return listitems(list);
+        }
+        else
+        {
+            return ["No alert"];
+        }
+    }
+
+    const listitems = (history) => history.map((entry) => 
+        <div className="alert-message">
+            {entry}
+        </div>);
 
     useEffect(() => {
-        fetch("/movies").then(response =>
+        fetch("https://snapary.roydu.ca/api/user/alert").then(response =>
           response.json().then(data => {
-            setAlert(data);
+              setAlert(processData(data));
           })
         );
     }, []);
@@ -17,11 +39,12 @@ function Alert() {
         <>
             <div className="alert-bg">
                 <div className="alert-message">
-                    🧼🖐 {alert}
+                    See alert of affected areas below
                 </div>
                 <div className="alert-img">
                     <FaExclamationCircle size={80} />
                 </div>
+                {alert}
             </div>
         </>
     )
