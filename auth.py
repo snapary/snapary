@@ -3,7 +3,7 @@ import bcrypt
 
 def login(username, password):
     user = firestore.user(username.lower())
-    return bcrypt.hashpw(password.encode(), user['salt'].encode()) == user['hash'].encode()
+    return bcrypt.hashpw(password.encode(), user['salt'].encode()) == user['hash'].encode() if not user == False else False
 
 def signup(username, password):
     salt = bcrypt.gensalt()
