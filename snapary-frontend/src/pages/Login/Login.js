@@ -27,8 +27,18 @@ function Login() {
             },
             body: JSON.stringify(jsonData)
           }).then(response => console.log(response));*/
+        /*fetch('https://snapary.roydu.ca/api/user/signin?username=' + username + '&password=' + password)
+          .then(response => console.log(response));*/
         fetch('https://snapary.roydu.ca/api/user/signin?username=' + username + '&password=' + password)
-          .then(response => console.log(response));
+          .then(res => {
+            if(res.ok) {
+              console.log(res);
+              return <Redirect to="/" />
+            } else {
+              throw Error(`Request rejected with status ${res.status}`);
+            }
+          })
+          .catch(console.error)
     
         event.preventDefault();
         }
