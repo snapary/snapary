@@ -17,7 +17,6 @@ function Post() {
     const handleLocalPost = (event) => {
         let lat = 0;
         let lng = 0;
-        let position = "";
         navigator.geolocation.watchPosition(function(position) {
             lat = position.coords.latitude;
             lng = position.coords.longitude;

@@ -5,15 +5,12 @@ import './Alert.css'
 function Alert() {
     const [alert, setAlert] = useState("No alert");
 
-    /*useEffect(() => {
+    useEffect(() => {
         fetch("/movies").then(response =>
           response.json().then(data => {
-            setMovies(data.movies);
+            setAlert(data);
           })
         );
-    }, []);*/
-    useEffect(() => {
-       setAlert("HAHAHAAHAH!")
     }, []);
 
     return (
