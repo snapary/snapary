@@ -71,8 +71,7 @@ function Header() {
                 <div className="navbar">
                     <div className="navbar-container">
                         <Link to='/' className="navbar-logo" onClick={closeMobileMenu}>
-                            <img src={Logo} alt="PurrtectorLogo" width="38px" height="38px" className='navbar-icon' />
-                            Snapary
+                            <img src={Logo} alt="PurrtectorLogo" width="236px" height="180" className='navbar-icon' />
                         </Link>
                         <div className="menu-icon" onClick={handleClick}>
                             {click ? <FaTimes className="pink" /> : <FaBars className="pink" />}
