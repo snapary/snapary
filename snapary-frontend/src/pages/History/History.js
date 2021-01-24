@@ -19,14 +19,14 @@ function History() {
                 <div className="title-row">
                     <div className="title-col">
                         <div className="title-line">
-                            View Your Diaries
+                            📚 View Your Diaries
                         </div>
                     </div>
                     <div className="title-col">
                         <div className="select-line">
                             Select Date
                         </div>
-                        <DatePicker style={{"paddingTop":"1rem"}} selected={date} onChange={date => setDate(date)} />
+                        <DatePicker style={{"marginTop":"1rem"}} selected={date} onChange={date => setDate(date)} />
                     </div>
                 </div>
                 <div className="list-group">

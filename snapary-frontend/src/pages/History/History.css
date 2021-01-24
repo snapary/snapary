@@ -4,7 +4,7 @@
     background-image: linear-gradient(to bottom right, #90f4d6 , rgb(225, 129, 255));
     background-repeat: no-repeat;
     background-size: 100%;
-    min-height: 630px;
+    min-height: 700px;
 }
 
 .title-row {
@@ -14,12 +14,11 @@
     flex: 50%;
     margin-left: 2rem;
     margin-right: 2rem;
-    border-bottom: 5px double black;
+    border-bottom: 6px dashed black;
 }
 
 .title-col {
     display: flex;
-    flex-direction: column;
     flex: 50%;
 }
 
@@ -47,8 +46,8 @@
 
 .select-line {
     padding-top: 1rem;
-    font-size: large;
-    font-weight: 400;
+    font-size: 2rem;
+    font-weight: 500;
 }
 
 .list-group {

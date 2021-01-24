@@ -14,22 +14,25 @@ function Login() {
         return username.length > 0 && password.length > 0;
     }
 
-    function handleSubmit(event) {
+    const handleSubmit = (event) => {
         alert('A form was submitted: ' + username);
         var jsonData = JSON.stringify({'username': username, 'password': password});
         console.log(jsonData);
 
-        fetch('/api/user/signin', {
+        /*fetch('https://snapary.roydu.ca/api/user/signin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': "*"
             },
             body: JSON.stringify(jsonData)
-          }).then(response => console.log(response));
+          }).then(response => console.log(response));*/
+        fetch('https://snapary.roydu.ca/api/user/signin?username=' + username + '&password=' + password)
+          .then(response => console.log(response));
     
         event.preventDefault();
-    }
+        }
+        
     
     return (
         <>

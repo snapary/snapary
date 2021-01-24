@@ -18,7 +18,10 @@ function Home() {
                             Your sticker diary
                         </div>
                         <div className="home-content">
-                            Record your day with one button press. Share, track, and enjoy your life!
+                         ☝️ Record your day with one button press.
+                        </div>
+                        <div className="home-content">
+                            Share, track, and enjoy your life! 🦄 
                         </div>
                     </div>
                 </div>
