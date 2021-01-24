@@ -11,11 +11,6 @@ function Post() {
         setEmoji(id);
         console.log(id);
     }
-
-    const style = {
-        width: '30rem',
-        height: '30rem'
-      }
     
     return (
         <>
@@ -23,7 +18,7 @@ function Post() {
                 <div className="post-row">
                     <div className="post-col">
                         <div className="map-window">
-                            <MapContainer style={style}/>
+                            <MapContainer />
                         </div>
                     </div>
                     <div className="post-col">
