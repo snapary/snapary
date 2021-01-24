@@ -31,7 +31,7 @@ function History() {
                 </div>
                 <div className="list-group">
                     <ListGroup>
-                        {listitems(history2)}
+                        {listitems(history1)}
                     </ListGroup>
                 </div>
             </div>

@@ -19,10 +19,11 @@ function Login() {
         var jsonData = JSON.stringify({'username': username, 'password': password});
         console.log(jsonData);
 
-        fetch('https://snapary.roydu.ca/api/user/signin', {
+        fetch('/api/user/signin', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': "*"
             },
             body: JSON.stringify(jsonData)
           }).then(response => console.log(response));
