@@ -15,7 +15,6 @@ function Login() {
     }
 
     const handleSubmit = (event) => {
-        alert('A form was submitted: ' + username);
         var jsonData = JSON.stringify({'username': username, 'password': password});
         console.log(jsonData);
 
@@ -30,12 +29,12 @@ function Login() {
               console.log(data);
               if (data["success"])
               {
-                history.push('/post')
+                history.push('/alert')
               }
         })});
 
         event.preventDefault();
-        }
+    }
         
     
     return (

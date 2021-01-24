@@ -3,14 +3,70 @@ import './Post.css'
 import Emojis from 'react-emoji-component'
 import Button from 'react-bootstrap/Button'
 import MapContainer from '../../components/Maps/MapContainer'
+import { useHistory } from 'react-router-dom'
 
 function Post() {
     const [emoji, setEmoji] = useState(0);
+    let history = useHistory();
 
     const handleSelect = (id) => {
         setEmoji(id);
         console.log(id);
     }
+    
+    const handleLocalPost = (event) => {
+        let lat = 0;
+        let lng = 0;
+        let position = "";
+        navigator.geolocation.watchPosition(function(position) {
+            lat = position.coords.latitude;
+            lng = position.coords.longitude;
+            console.log("ahhhhhhhhhhhhfffffff");
+        });
+        var jsonData = JSON.stringify({'lat': lat, 'long': lng, 'emo':emoji});
+        console.log(jsonData);
+
+        fetch('https://snapary.roydu.ca/api/user/setHistory', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': "*"
+            },
+            body: JSON.stringify(jsonData)
+          }).then(response => {response.json().then(data => {
+              console.log(data);
+              if (data["success"])
+              {
+                alert("Successfully Posted to Private Diary!")
+                history.push('/post')
+              }
+        })});
+
+        event.preventDefault();
+    }
+    /*
+    const handleShare = (event) => {
+        var jsonData = JSON.stringify({'username': username, 'password': password});
+        console.log(jsonData);
+
+        fetch('https://snapary.roydu.ca/api/user/signin', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': "*"
+            },
+            body: JSON.stringify(jsonData)
+          }).then(response => {response.json().then(data => {
+              console.log(data);
+              if (data["success"])
+              {
+                alert("Successfully Posted to Private Diary!")
+                history.push('/post')
+              }
+        })});
+
+        event.preventDefault();
+    }*/
     
     return (
         <>
@@ -93,10 +149,10 @@ function Post() {
                         </div>
                         <div className="share-btn-row">
                             <div className="share-btn-col">
-                                <Button variant="dark" size="lg">✒️ Write To Diary</Button>{' '}
+                                <Button variant="dark" size="lg" onClick={handleLocalPost}>✒️ Write To Diary</Button>{' '}
                             </div>
                             <div className="share-btn-col">
-                                <Button variant="light" size="lg">🔮 Write To Diary And Share</Button>{' '}
+                                <Button variant="light" size="lg">🔮 Share To Twitter</Button>{' '}
                             </div>
                         </div>
                     </div>       
