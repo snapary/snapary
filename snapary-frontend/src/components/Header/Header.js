@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import './Header.css'
@@ -7,9 +7,63 @@ import { IconContext } from 'react-icons/lib'
 
 function Header() {
     const [click, setClick] = useState(false);
+    const [login, setLogin] = useState(false);
+    const [option, setOption] = useState(['/', '/login', '/register', '/post', '/alert', '/history']);
+    const [current, setCurrent] = useState('/');
+
+    var getText = (url) => {
+        if (url === '/') {
+            return 'Home'
+        }
+        if (url === '/post') {
+            return 'Post'
+        }
+        if (url === '/login') {
+            return 'Log in'
+        }
+        if (url === '/register') {
+            return 'Register'
+        }
+        if (url === '/history') {
+            return 'History'
+        }
+        if (url === '/alert') {
+            return 'Alert'
+        }
+    }
+
+    const listRender = (list) => list.map((entry) => 
+        <li className="nav-item">
+            <Link to={entry} className="nav-links" onClick={()=>clicked(entry)}>
+                {getText(entry)}
+            </Link>
+        </li>);
 
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
+    const clicked = (link) => {
+        closeMobileMenu();
+        setCurrent(link);
+    }
+
+    const checkLogin = (event) => {
+        fetch('https://snapary.roydu.ca/api/user/status', {
+            method: 'POST'
+          }).then(response => {response.json().then(data => {
+              console.log(data);
+              if (data["loginStatus"])
+              {
+                setLogin(true);
+              }
+        })});
+    }
+
+    useEffect(() => {
+        checkLogin();
+        if (login) {
+            setOption(['/', '/post', '/alert', '/history'])
+        }
+     }, [current]);
 
     return (
         <>
@@ -24,36 +78,7 @@ function Header() {
                             {click ? <FaTimes className="pink" /> : <FaBars className="pink" />}
                         </div>
                         <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-                            <li className="nav-item">
-                                <Link to='/' className="nav-links" onClick={closeMobileMenu}>
-                                    Home
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to='/alert' className="nav-links" onClick={closeMobileMenu}>
-                                    Alert
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to='/history' className="nav-links" onClick={closeMobileMenu}>
-                                    History
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to='/post' className="nav-links" onClick={closeMobileMenu}>
-                                    Post   
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to='/login' className="nav-links" onClick={closeMobileMenu}>
-                                    Login
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to='/register' className="nav-links" onClick={closeMobileMenu}>
-                                    Register  
-                                </Link>
-                            </li>
+                            {listRender(option)}
                         </ul>    
                     </div>
                 </div>

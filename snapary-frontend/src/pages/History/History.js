@@ -11,14 +11,36 @@ function History() {
         </ListGroup.Item>);
     
     const [date, setDate] = useState(new Date());
-    const [entries, setEntries] = useState("");
-    const history1 = ['Example','I am happy', 'Meh ok', 'Died', 'Alive again', 'Doing well, maybe'];
+    const [entries, setEntries] = useState(listitems(history1));
+    const history1 = ['Example diary here','I am happy', 'Meh ok', 'Died', 'Alive again', 'Doing well, maybe'];
     
     const handleSelect = (date) => {
         console.log(date);
         setDate(date);
-        setEntries(listitems(history1));
+        //setEntries(getEntries(date));
     }
+    /*
+    const getEntries = (date) => {
+        var jsonData = JSON.stringify({'username': username, 'password': password});
+        console.log(jsonData);
+
+        fetch('https://snapary.roydu.ca/api/user/signin', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': "*"
+            },
+            body: JSON.stringify(jsonData)
+          }).then(response => {response.json().then(data => {
+              console.log(data);
+              if (data["success"])
+              {
+                history.push('/post')
+              }
+        })});
+
+        event.preventDefault();
+    }*/
 
     return (
         <>
@@ -28,12 +50,6 @@ function History() {
                         <div className="title-line">
                             📚 View Your Diaries
                         </div>
-                    </div>
-                    <div className="title-col">
-                        <div className="select-line">
-                            Select Date
-                        </div>
-                        <DatePicker style={{"marginTop":"1rem"}} selected={date} onChange={(date => handleSelect)} />
                     </div>
                 </div>
                 <div className="list-group">

@@ -3,14 +3,39 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import "./Register.css";
 import "../Login/Login.css"
+import { useHistory } from "react-router-dom";
 
 function Register() {
     const [email, setEmail] = useState("");
     const [password0, setPassword] = useState("");
     const [password1, confirmPassword] = useState("");
+    let history = useHistory();
 
     function valid_passwords() {
         return password0 === password1;
+    }
+
+    const handleSubmit = (event) => {
+        alert('A form was submitted: ' + email);
+        var jsonData = JSON.stringify({'username': email, 'password': password0});
+        console.log(jsonData);
+
+        fetch('https://snapary.roydu.ca/api/user/signin', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': "*"
+            },
+            body: JSON.stringify(jsonData)
+          }).then(response => {response.json().then(data => {
+              console.log(data);
+              if (data["success"])
+              {
+                history.push('/post')
+              }
+        })});
+
+        event.preventDefault();
     }
 
     return (
@@ -42,7 +67,7 @@ function Register() {
                             onChange={(e) => confirmPassword(e.target.value)}
                         />
                     </Form.Group> 
-                    <Button block size="lg" type="Register" disabled={valid_passwords()}>
+                    <Button block size="lg" type="Register" disabled={valid_passwords()} onClick={handleSubmit}>
                         Register
                     </Button>
                 </div>
