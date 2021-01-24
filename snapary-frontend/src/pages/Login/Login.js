@@ -19,27 +19,32 @@ function Login() {
         var jsonData = JSON.stringify({'username': username, 'password': password});
         console.log(jsonData);
 
-        /*fetch('https://snapary.roydu.ca/api/user/signin', {
+        fetch('https://snapary.roydu.ca/api/user/signin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': "*"
             },
             body: JSON.stringify(jsonData)
-          }).then(response => console.log(response));*/
+          }).then(response => {response.json().then(data => {
+              console.log(data)
+        })});
+
         /*fetch('https://snapary.roydu.ca/api/user/signin?username=' + username + '&password=' + password)
           .then(response => console.log(response));*/
-        fetch('https://snapary.roydu.ca/api/user/signin?username=' + username + '&password=' + password)
-          .then(res => {
-            if(res.ok) {
-              console.log(res);
-              return <Redirect to="/" />
-            } else {
-              throw Error(`Request rejected with status ${res.status}`);
-            }
-          })
-          .catch(console.error)
-    
+        // // fetch('https://snapary.roydu.ca/api/user/signin?username=' + username + '&password=' + password)
+        //   .then(res => {
+        //     if(res.ok) {
+        //       console.log(res);
+        //       return <Redirect to="/" />
+        //     } else {
+        //       throw Error(`Request rejected with status ${res.status}`);
+        //     }
+        //   })
+        //   .catch(console.error)
+
+
+
         event.preventDefault();
         }
         
