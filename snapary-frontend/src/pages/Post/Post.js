@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Post.css'
 import Emojis from 'react-emoji-component'
 import Button from 'react-bootstrap/Button'
@@ -7,6 +7,8 @@ import { useHistory } from 'react-router-dom'
 
 function Post() {
     const [emoji, setEmoji] = useState(0);
+    const [long, setlong] = useState(0);
+    const [lat, setlat] = useState(0);
     let history = useHistory();
 
     const handleSelect = (id) => {
@@ -15,36 +17,9 @@ function Post() {
     }
     
     const handleLocalPost = (event) => {
-        let lat = 0;
-        let lng = 0;
-        var jsonData;
-        navigator.geolocation.watchPosition(function(position) {
-            lat = position.coords.latitude;
-            lng = position.coords.longitude;
-            console.log("lat:", lat);
-            console.log("lng:", lng);
-        });
-        jsonData = JSON.stringify({'lat': lat, 'long': lng, 'emo':emoji});
+        var jsonData = JSON.stringify({'lat': lat, 'long': long, 'emo':emoji});
         console.log(jsonData);
-
-        /*var jsonData1 = JSON.stringify({'username': 'grant1', 'password': 'pornhubPremium!'});
-
-        fetch('https://snapary.roydu.ca/api/user/signin', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': "*"
-            },
-            body: JSON.stringify(jsonData1)
-          }).then(response => {response.json().then(data => {
-              console.log(data);
-              if (data["success"])
-              {
-                console.log("logged in!!!");
-              }
-        })});
-        console.log("before post");*/
-
+        
         fetch('https://snapary.roydu.ca/api/user/setHistory', {
             method: 'POST',
             headers: {
@@ -63,29 +38,17 @@ function Post() {
 
         event.preventDefault();
     }
-    /*
-    const handleShare = (event) => {
-        var jsonData = JSON.stringify({'username': username, 'password': password});
-        console.log(jsonData);
-
-        fetch('https://snapary.roydu.ca/api/user/signin', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': "*"
-            },
-            body: JSON.stringify(jsonData)
-          }).then(response => {response.json().then(data => {
-              console.log(data);
-              if (data["success"])
-              {
-                alert("Successfully Posted to Private Diary!")
-                history.push('/post')
-              }
-        })});
-
-        event.preventDefault();
-    }*/
+    
+    useEffect(() => {
+        if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(function(position) {
+                console.log("Latitude is :", position.coords.latitude);
+                console.log("Longitude is :", position.coords.longitude);
+                setlat(position.coords.latitude);
+                setlong(position.coords.longitude);
+            });
+        }
+    }, []);
     
     return (
         <>

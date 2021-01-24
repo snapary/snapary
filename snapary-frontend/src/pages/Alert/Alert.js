@@ -39,7 +39,7 @@ function Alert() {
         <>
             <div className="alert-bg">
                 <div className="alert-message">
-                    See alert of affected areas below
+                    See any area affected by covid cases below
                 </div>
                 <div className="alert-img">
                     <FaExclamationCircle size={80} />

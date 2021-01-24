@@ -16,14 +16,14 @@ function History() {
         let emos = [];
         let target = [];
         console.log(events);
-        for (var i = 0; i < events.length; i++)
+        for (var i = events.length-1; i >= 0; i--)
         {
             console.log(events[i]);
             let str = "Visited " + events[i]["area"] + " at " + events[i]["time"];
             result.push(str);
             emos.push(getEmo(events[i]["emo"]));
         }
-        for (var j = 0; j< result.length; j++)
+        for (var j = 0; j < result.length; j++)
         {
             target.push(
                 <ListGroup.Item action variant="light">
@@ -36,40 +36,40 @@ function History() {
 
     const getEmo = (i) => {
         console.log(i);
-        if (i === "1") {
+        if (i === 1) {
             return (<Emojis size={50}>😎</Emojis>);
         }
-        if (i === "2") {
+        if (i === 2) {
             return (<Emojis size={50}>😭</Emojis>);
         }
-        if (i === "3") {
+        if (i === 3) {
             return (<Emojis size={50}>🤩</Emojis>);
         }
-        if (i === "4") {
+        if (i === 4) {
             return (<Emojis size={50}>😱</Emojis>);
         }
-        if (i === "5") {
+        if (i === 5) {
             return (<Emojis size={50}>🥳</Emojis>);
         }
-        if (i === "6") {
+        if (i === 6) {
             return (<Emojis size={50}>🤢</Emojis>);
         }
-        if (i === "7") {
+        if (i === 7) {
             return (<Emojis size={50}>😴</Emojis>);
         }
-        if (i === "8") {
+        if (i === 8) {
             return (<Emojis size={50}>😡</Emojis>);
         }
-        if (i === "9") {
+        if (i === 9) {
             return (<Emojis size={50}>💩</Emojis>);
         }
-        if (i === "10") {
+        if (i === 10) {
             return (<Emojis size={50}>🤡</Emojis>);
         }
-        if (i === "11") {
+        if (i === 11) {
             return (<Emojis size={50}>❤️</Emojis>);
         }
-        if (i === "12") {
+        if (i === 12) {
             return (<Emojis size={50}>🌈</Emojis>);
         }
         else {
