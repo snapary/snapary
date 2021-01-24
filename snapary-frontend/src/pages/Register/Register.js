@@ -16,9 +16,9 @@ function Register() {
     return (
         <>
             <div className="login-bg">
-                <div className="Register" style={{"padding-top": '6rem'}}>
+                <div className="Register" style={{"paddingTop": '6rem'}}>
                     <Form.Group size="lg" controlId="email">
-                        <Form.Label style={{"font-weight": "700", "font-size": "40", "lineHeight": "3"}}>Username</Form.Label>
+                        <Form.Label style={{"fontWeight": "700", "fontSize": "40", "lineHeight": "3"}}>Username</Form.Label>
                         <Form.Control
                             autoFocus
                             type="email"
@@ -27,7 +27,7 @@ function Register() {
                         />
                     </Form.Group>
                     <Form.Group size="lg" controlId="password0">
-                        <Form.Label style={{"font-weight": "700", "font-size": "40", "lineHeight": "2"}}>Password</Form.Label>
+                        <Form.Label style={{"fontWeight": "700", "fontSize": "40", "lineHeight": "2"}}>Password</Form.Label>
                         <Form.Control
                             type="password"
                             value={password0}
@@ -35,7 +35,7 @@ function Register() {
                         />
                     </Form.Group>
                     <Form.Group size="lg" controlId="passwor10">
-                        <Form.Label style={{"font-weight": "700", "font-size": "40", "lineHeight": "2"}}> Confirm Password</Form.Label>
+                        <Form.Label style={{"fontWeight": "700", "fontSize": "40", "lineHeight": "2"}}> Confirm Password</Form.Label>
                         <Form.Control
                             type="password"
                             value={password1}

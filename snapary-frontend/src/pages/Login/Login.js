@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import "./Login.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [data, setData] = useState("");
+    let history = useHistory();
 
     function validateForm() {
         return username.length > 0 && password.length > 0;
@@ -27,23 +27,12 @@ function Login() {
             },
             body: JSON.stringify(jsonData)
           }).then(response => {response.json().then(data => {
-              console.log(data)
+              console.log(data);
+              if (data["success"])
+              {
+                history.push('/post')
+              }
         })});
-
-        /*fetch('https://snapary.roydu.ca/api/user/signin?username=' + username + '&password=' + password)
-          .then(response => console.log(response));*/
-        // // fetch('https://snapary.roydu.ca/api/user/signin?username=' + username + '&password=' + password)
-        //   .then(res => {
-        //     if(res.ok) {
-        //       console.log(res);
-        //       return <Redirect to="/" />
-        //     } else {
-        //       throw Error(`Request rejected with status ${res.status}`);
-        //     }
-        //   })
-        //   .catch(console.error)
-
-
 
         event.preventDefault();
         }
@@ -54,8 +43,8 @@ function Login() {
             <div className="login-bg">
                 <div className="Login">
                     <Form>
-                        <Form.Group size="lg" controlId="username" style={{"padding-top": '6rem'}}>
-                            <Form.Label style={{"font-weight": "700", "font-size": "40", "lineHeight": "3"}}>Username</Form.Label>
+                        <Form.Group size="lg" controlId="username" style={{"paddingTop": '6rem'}}>
+                            <Form.Label style={{"fontWeight": "700", "fontSize": "40", "lineHeight": "3"}}>Username</Form.Label>
                             <Form.Control
                                 autoFocus
                                 type="username"
@@ -64,7 +53,7 @@ function Login() {
                             />
                         </Form.Group>
                         <Form.Group size="lg" controlId="password">
-                            <Form.Label style={{"font-weight": "700", "font-size": "40", "lineHeight": "3"}}>Password</Form.Label>
+                            <Form.Label style={{"fontWeight": "700", "fontSize": "40", "lineHeight": "3"}}>Password</Form.Label>
                             <Form.Control
                                 type="password"
                                 value={password}
@@ -75,9 +64,6 @@ function Login() {
                             Login
                         </Button>
                     </Form>
-                    <h1>
-                        {data}
-                    </h1>
                 </div>
             </div>
         </>

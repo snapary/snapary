@@ -51,7 +51,10 @@ function MapContainer(props) {
         <div>
             <Map google={props.google} zoom={14} containerStyle={style}
                  center={{lat: lat, lng:lgn}}>
-            <Marker />
+            <Marker
+                title={'The marker`s title will appear as a tooltip.'}
+                name={'Your current location'}
+                position={{lat: lat, lng: lgn}} />
             </Map>
         </div>
     );
