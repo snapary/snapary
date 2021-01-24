@@ -26,6 +26,24 @@ function Post() {
         var jsonData = JSON.stringify({'lat': lat, 'long': lng, 'emo':emoji});
         console.log(jsonData);
 
+        /*var jsonData1 = JSON.stringify({'username': 'grant1', 'password': 'pornhubPremium!'});
+
+        fetch('https://snapary.roydu.ca/api/user/signin', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': "*"
+            },
+            body: JSON.stringify(jsonData1)
+          }).then(response => {response.json().then(data => {
+              console.log(data);
+              if (data["success"])
+              {
+                console.log("logged in!!!");
+              }
+        })});
+        console.log("before post");*/
+
         fetch('https://snapary.roydu.ca/api/user/setHistory', {
             method: 'POST',
             headers: {

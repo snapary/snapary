@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import './History.css'
 import DatePicker from "react-datepicker";
 import ListGroup from "react-bootstrap/ListGroup"
@@ -11,36 +11,21 @@ function History() {
         </ListGroup.Item>);
     
     const [date, setDate] = useState(new Date());
-    const [entries, setEntries] = useState(listitems(history1));
-    const history1 = ['Example diary here','I am happy', 'Meh ok', 'Died', 'Alive again', 'Doing well, maybe'];
+    const [entries, setEntries] = useState(['ahh']);
+    const history1 = ['Example','I am happy', 'Meh ok', 'Died', 'Alive again', 'Doing well, maybe'];
     
     const handleSelect = (date) => {
         console.log(date);
-        setDate(date);
-        //setEntries(getEntries(date));
+        setEntries(listitems(history1));
     }
-    /*
-    const getEntries = (date) => {
-        var jsonData = JSON.stringify({'username': username, 'password': password});
-        console.log(jsonData);
 
-        fetch('https://snapary.roydu.ca/api/user/signin', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': "*"
-            },
-            body: JSON.stringify(jsonData)
-          }).then(response => {response.json().then(data => {
-              console.log(data);
-              if (data["success"])
-              {
-                history.push('/post')
-              }
-        })});
-
-        event.preventDefault();
-    }*/
+    useEffect(() => {
+        fetch("/").then(response =>
+          response.json().then(data => {
+            setEntries(data);
+          })
+        );
+    }, []);
 
     return (
         <>
@@ -54,7 +39,7 @@ function History() {
                 </div>
                 <div className="list-group">
                     <ListGroup>
-                        {listitems(history1)}
+                        {listitems(entries)}
                     </ListGroup>
                 </div>
             </div>
